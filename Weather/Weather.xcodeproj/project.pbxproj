@@ -14,6 +14,7 @@
 		0FDC9F7C2B73ADC0002EAE6B /* WeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDC9F7B2B73ADC0002EAE6B /* WeatherUITests.swift */; };
 		0FDC9F7E2B73ADC0002EAE6B /* WeatherUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDC9F7D2B73ADC0002EAE6B /* WeatherUITestsLaunchTests.swift */; };
 		0FDC9F902B73AF40002EAE6B /* App in Frameworks */ = {isa = PBXBuildFile; productRef = 0FDC9F8F2B73AF40002EAE6B /* App */; };
+		0FF159482B73D21B008B6AE5 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 0FF159472B73D21B008B6AE5 /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FF159482B73D21B008B6AE5 /* ComposableArchitecture in Frameworks */,
 				0FDC9F902B73AF40002EAE6B /* App in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,6 +190,7 @@
 			name = Weather;
 			packageProductDependencies = (
 				0FDC9F8F2B73AF40002EAE6B /* App */,
+				0FF159472B73D21B008B6AE5 /* ComposableArchitecture */,
 			);
 			productName = TcaExperiment;
 			productReference = 0FDC9F5C2B73ADBE002EAE6B /* Weather.app */;
@@ -261,6 +264,9 @@
 				Base,
 			);
 			mainGroup = 0FDC9F532B73ADBE002EAE6B;
+			packageReferences = (
+				0FF159462B73D21B008B6AE5 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = 0FDC9F5D2B73ADBE002EAE6B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -661,10 +667,26 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		0FF159462B73D21B008B6AE5 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = exactVersion;
+				version = 1.7.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		0FDC9F8F2B73AF40002EAE6B /* App */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = App;
+		};
+		0FF159472B73D21B008B6AE5 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FF159462B73D21B008B6AE5 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -13,9 +13,15 @@ let package = Package(
       targets: ["App"]
     ),
   ],
+  dependencies: [
+    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", exact: "1.7.3")
+  ],
   targets: [
     .target(
-      name: "App"
+      name: "App",
+      dependencies: [
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+      ]
     ),
     .testTarget(
       name: "AppTests",

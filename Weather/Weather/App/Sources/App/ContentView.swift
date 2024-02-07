@@ -1,9 +1,12 @@
 import SwiftUI
+import ComposableArchitecture
 
 public struct ContentView: View {
 
-  public init() {
-    /* NOOP */
+  let store: StoreOf<CounterFeature>
+
+  public init(store: StoreOf<CounterFeature>) {
+    self.store = store
   }
 
   public var body: some View {
@@ -12,11 +15,34 @@ public struct ContentView: View {
         .imageScale(.large)
         .foregroundStyle(.tint)
       Text("Hello, Weather!")
+
+      WithPerceptionTracking {
+        Text("\(store.count)")
+          .frame(width: 92, height: 44)
+          .background(Color.green)
+          .foregroundColor(Color.white)
+        HStack {
+          Button("+") {
+            store.send(.incrementButtonTapped)
+          }
+          .frame(width: 44, height: 44)
+          .background(Color.gray)
+          Button("-") {
+            store.send(.decrementButtonTapped)
+          }
+          .frame(width: 44, height: 44)
+          .background(Color.gray)
+        }
+      }
     }
     .padding()
   }
 }
 
 #Preview {
-  ContentView()
+  ContentView(
+    store: Store(initialState: CounterFeature.State()) {
+      CounterFeature()
+    }
+  )
 }
