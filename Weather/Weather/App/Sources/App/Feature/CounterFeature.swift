@@ -7,7 +7,13 @@ public struct CounterFeature {
   public init() { /* NOOP */ }
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
+    public static func == (lhs: CounterFeature.State, rhs: CounterFeature.State) -> Bool {
+      return lhs.count == rhs.count
+      && lhs.fact == rhs.fact
+      && lhs.isTimerRunning == rhs.isTimerRunning
+    }
+ 
     var count = 0
     var fact: FactResponse? = nil
     var isTimerRunning = false
@@ -25,7 +31,9 @@ public struct CounterFeature {
   }
 
   enum CancelID { case timer }
-  
+
+  @Dependency(\.dogFacts) var dogFacts
+
   public var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
@@ -39,10 +47,7 @@ public struct CounterFeature {
 
       case .factButtonTapped:
         return .run { [count = state.count] send in
-          let (data, _) = try await URLSession.shared
-            .data(from: URL(string: "https://dog-api.kinduff.com/api/facts?number=\(count)")!)
-          let facts = try JSONDecoder().decode(FactResponse.self, from: data)
-          await send(.factResponse(facts))
+          try await send(.factResponse(self.dogFacts.fetch(count)))
         }
 
       case .factResponse(let fact):

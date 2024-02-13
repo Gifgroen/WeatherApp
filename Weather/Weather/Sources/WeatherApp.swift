@@ -11,7 +11,7 @@ struct WeatherApp: App {
 
   var body: some Scene {
     WindowGroup {
-      ContentView(
+      CounterView(
         store: WeatherApp.store
       )
     }

@@ -25,7 +25,10 @@ let package = Package(
     ),
     .testTarget(
       name: "AppTests",
-      dependencies: ["App"]
+      dependencies: [
+        "App",
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+      ]
     ),
   ]
 )

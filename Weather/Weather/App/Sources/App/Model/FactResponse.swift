@@ -1,13 +1,13 @@
-//
-//  File.swift
-//  
-//
-//  Created by Karsten Westra on 12/02/2024.
-//
-
 import Foundation
 
 public struct FactResponse: Codable {
   let facts: [String]
   let success: Bool
+}
+
+extension FactResponse: Equatable {
+  public static func ==(lhs: FactResponse, rhs: FactResponse) -> Bool {
+    return lhs.facts == rhs.facts
+      && lhs.success == rhs.success
+  }
 }
