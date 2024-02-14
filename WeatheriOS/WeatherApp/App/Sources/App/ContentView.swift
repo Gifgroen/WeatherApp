@@ -7,9 +7,14 @@ import WeatherForecast
 public struct ContentView: View {
 
   let store: StoreOf<AppFeature>
+  let contactsStore: StoreOf<ContactsFeature>
 
-  public init(store: StoreOf<AppFeature>) {
+  public init(
+    store: StoreOf<AppFeature>,
+    contactsStore: StoreOf<ContactsFeature>
+  ) {
     self.store = store
+    self.contactsStore = contactsStore
   }
 
   public var body: some View {
@@ -26,7 +31,7 @@ public struct ContentView: View {
           Text("Counter 1")
         }
 
-      ContactsView()
+      ContactsView(store: contactsStore)
         .tabItem {
           Image(systemName: "viewfinder")
           Text("Contacts")
