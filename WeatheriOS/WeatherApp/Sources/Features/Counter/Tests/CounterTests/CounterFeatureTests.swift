@@ -1,6 +1,6 @@
 import XCTest
 import ComposableArchitecture
-@testable import App
+@testable import Counter
 
 @MainActor
 final class CounterFeatureTests: XCTestCase {

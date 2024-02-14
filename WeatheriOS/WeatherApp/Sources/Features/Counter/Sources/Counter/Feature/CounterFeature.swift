@@ -14,7 +14,7 @@ public struct CounterFeature {
       && lhs.isTimerRunning == rhs.isTimerRunning
     }
  
-    var count = 0
+    public var count = 0
     var fact: FactResponse? = nil
     var isTimerRunning = false
 

@@ -1,34 +1,32 @@
 // swift-tools-version: 5.9
+
 import PackageDescription
 
 let package = Package(
-  name: "App",
+  name: "Contacts",
   platforms: [
     .iOS(.v15),
     .macOS(.v14)
   ],
   products: [
     .library(
-      name: "App",
-      targets: ["App"]
-    ),
+      name: "Contacts",
+      targets: ["Contacts"]
+    )
   ],
   dependencies: [
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", exact: "1.7.3")
   ],
   targets: [
     .target(
-      name: "App",
+      name: "Contacts",
       dependencies: [
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
       ]
     ),
     .testTarget(
-      name: "AppTests",
-      dependencies: [
-        "App",
-        .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
-      ]
-    ),
+      name: "ContactsTests",
+      dependencies: ["Contacts"]
+    )
   ]
 )
